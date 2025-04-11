@@ -20,8 +20,27 @@ A full-featured VOIP application with chat messaging, voice/video calls, and con
 
 ## Prerequisites
 
-- Node.js >= 18.18.0 (The application requires a modern version of Node.js)
+- Node.js >= 16.0.0 (The application requires a modern version of Node.js)
 - MongoDB instance (local or Atlas)
+
+## Important Note About Node.js Version
+
+This application has two configurations:
+
+1. **For local development**: We've downgraded dependencies to be compatible with Node.js 16+
+2. **For Vercel deployment**: The `--legacy-peer-deps` flag is used to handle React dependency conflicts
+
+**If you're using Node.js v8.x** (which is quite outdated), you'll see errors like:
+```
+SyntaxError: Unexpected token import
+```
+
+Please upgrade your Node.js version using nvm:
+
+```
+nvm install 16
+nvm use 16
+```
 
 ## Setup
 
@@ -30,9 +49,9 @@ A full-featured VOIP application with chat messaging, voice/video calls, and con
    ```
    npm install
    ```
-   or
+   or with legacy peer dependencies if needed:
    ```
-   yarn install
+   npm install --legacy-peer-deps
    ```
 
 3. Create a `.env` file based on `.env.example` and fill in your values:
@@ -55,6 +74,18 @@ A full-featured VOIP application with chat messaging, voice/video calls, and con
 
 This application uses bcryptjs (a pure JavaScript implementation) instead of bcrypt (which requires native modules) for password hashing. This ensures compatibility with serverless environments like Vercel.
 
+Our vercel.json is configured to use the `--legacy-peer-deps` flag to handle React dependency conflicts:
+
+```json
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "nextjs",
+  "outputDirectory": ".next"
+}
+```
+
 Make sure to add all the required environment variables in the Vercel dashboard:
 
 - MONGODB_URI
@@ -63,21 +94,6 @@ Make sure to add all the required environment variables in the Vercel dashboard:
 - ENCRYPTION_SECRET
 - NEXT_PUBLIC_API_URL (your Vercel deployment URL)
 - Twilio and TURN server credentials if using those features
-
-### Node.js Version
-
-This application requires Node.js version 18.18.0 or higher. If you're experiencing issues with npm install or starting the server, please ensure you're using a compatible Node.js version:
-
-```
-node -v
-```
-
-You can use nvm (Node Version Manager) to install and switch to a compatible version:
-
-```
-nvm install 18
-nvm use 18
-```
 
 ### MongoDB Setup
 
