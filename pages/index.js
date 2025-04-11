@@ -36,19 +36,19 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#d946ef] to-[#10b981] flex items-center justify-center p-4">
       <Head>
         <title>{isSignIn ? 'Sign In' : 'Sign Up'} - VoIP App</title>
         <meta name="description" content="VoIP application authentication page" />
       </Head>
       
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
         <div className="p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">
+            <h1 className="text-4xl font-extrabold text-[#d946ef]">
               {isSignIn ? 'Welcome Back' : 'Create Account'}
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-[#10b981] mt-2 font-medium">
               {isSignIn 
                 ? 'Sign in to continue to VoIP App' 
                 : 'Sign up to start using VoIP App'}
@@ -67,7 +67,7 @@ export default function Auth() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-3 border-2 border-[#10b981] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d946ef] focus:border-transparent"
                   placeholder="John Doe"
                   required={!isSignIn}
                 />
@@ -84,7 +84,7 @@ export default function Auth() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-3 border-2 border-[#10b981] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d946ef] focus:border-transparent"
                 placeholder="you@example.com"
                 required
               />
@@ -100,7 +100,7 @@ export default function Auth() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-3 border-2 border-[#10b981] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d946ef] focus:border-transparent"
                 placeholder="••••••••"
                 required
               />
@@ -109,7 +109,7 @@ export default function Auth() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-indigo-600 text-white p-3 rounded-md font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors disabled:opacity-70"
+              className="w-full bg-gradient-to-r from-[#d946ef] to-[#10b981] text-white p-3 rounded-lg font-medium hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#d946ef] focus:ring-offset-2 transition-all shadow-lg disabled:opacity-70 text-lg"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center">
@@ -128,7 +128,7 @@ export default function Auth() {
           <div className="text-center mt-6">
             <button 
               onClick={toggleForm}
-              className="text-indigo-600 hover:text-indigo-800 font-medium"
+              className="text-[#d946ef] hover:text-[#10b981] font-medium transition-colors"
             >
               {isSignIn ? "Don't have an account? Sign Up" : "Already have an account? Sign In"}
             </button>
@@ -136,20 +136,20 @@ export default function Auth() {
           
           {isSignIn && (
             <div className="text-center mt-4">
-              <a href="#" className="text-sm text-gray-600 hover:text-indigo-600">
+              <a href="#" className="text-sm text-gray-600 hover:text-[#d946ef] transition-colors">
                 Forgot your password?
               </a>
             </div>
           )}
         </div>
         
-        <div className="px-8 py-4 bg-gray-50 border-t border-gray-100 text-center text-sm text-gray-600">
+        <div className="px-8 py-4 bg-gradient-to-r from-[#10b981]/10 to-[#d946ef]/10 border-t border-[#10b981]/20 text-center text-sm text-gray-600">
           By using this service, you agree to our{' '}
-          <a href="#" className="text-indigo-600 hover:text-indigo-800">
+          <a href="#" className="text-[#10b981] hover:text-[#d946ef] transition-colors">
             Terms of Service
           </a>{' '}
           and{' '}
-          <a href="#" className="text-indigo-600 hover:text-indigo-800">
+          <a href="#" className="text-[#10b981] hover:text-[#d946ef] transition-colors">
             Privacy Policy
           </a>
         </div>
