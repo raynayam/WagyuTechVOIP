@@ -36,6 +36,10 @@ export default function Dashboard() {
     router.push('/');
   };
 
+  const handleOpenDialer = () => {
+    router.push('/phone-dialer');
+  };
+
   const [selectedContact, setSelectedContact] = useState(contacts[0]);
   const [newMessage, setNewMessage] = useState('');
 
@@ -96,8 +100,19 @@ export default function Dashboard() {
                 Contacts
               </button>
               <button
+                onClick={handleOpenDialer}
+                className="px-3 py-2 rounded-md text-sm font-medium bg-[#39a5dc] text-white hover:bg-[#2980b9]"
+              >
+                <div className="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Dial Pad
+                </div>
+              </button>
+              <button
                 onClick={handleSignOut}
-                className="ml-4 px-4 py-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-white/10"
+                className="ml-2 px-4 py-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-white/10"
               >
                 Sign Out
               </button>
@@ -160,12 +175,14 @@ export default function Dashboard() {
                   </div>
                 </div>
                 <div className="flex space-x-3">
-                  <button className="p-2 rounded-full bg-[#10b981]/10 text-[#10b981] hover:bg-[#10b981]/20">
+                  <button 
+                    onClick={handleOpenDialer}
+                    className="p-2 rounded-full bg-[#39a5dc]/10 text-[#39a5dc] hover:bg-[#39a5dc]/20">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </button>
-                  <button className="p-2 rounded-full bg-[#d946ef]/10 text-[#d946ef] hover:bg-[#d946ef]/20">
+                  <button className="p-2 rounded-full bg-[#10b981]/10 text-[#10b981] hover:bg-[#10b981]/20">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
@@ -229,10 +246,14 @@ export default function Dashboard() {
           <div className="bg-white border border-[#10b981]/20 rounded-xl shadow-lg overflow-hidden">
             <div className="p-4 border-b border-[#10b981]/20 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-[#d946ef]">Recent Calls</h2>
-              <button className="p-2 rounded-full bg-[#10b981]/10 text-[#10b981] hover:bg-[#10b981]/20">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <button 
+                onClick={handleOpenDialer}
+                className="p-2 rounded-full bg-[#39a5dc] text-white hover:bg-[#2980b9] flex items-center"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
+                New Call
               </button>
             </div>
             
@@ -260,7 +281,10 @@ export default function Dashboard() {
                   <div className="flex items-center space-x-2">
                     <div className="text-gray-500">{call.duration}</div>
                     <div className="flex space-x-2">
-                      <button className="p-2 rounded-full bg-[#10b981]/10 text-[#10b981] hover:bg-[#10b981]/20">
+                      <button 
+                        onClick={handleOpenDialer}
+                        className="p-2 rounded-full bg-[#39a5dc]/10 text-[#39a5dc] hover:bg-[#39a5dc]/20"
+                      >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
@@ -317,7 +341,10 @@ export default function Dashboard() {
                   </div>
                   
                   <div className="flex space-x-2">
-                    <button className="p-2 rounded-full bg-[#10b981]/10 text-[#10b981] hover:bg-[#10b981]/20">
+                    <button 
+                      onClick={handleOpenDialer}
+                      className="p-2 rounded-full bg-[#39a5dc]/10 text-[#39a5dc] hover:bg-[#39a5dc]/20"
+                    >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
