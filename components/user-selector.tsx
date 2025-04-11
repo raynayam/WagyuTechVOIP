@@ -28,11 +28,11 @@ export function UserSelector({ userId, onSelectUser }: UserSelectorProps) {
   // Initialize socket connection to get online users
   const { isConnected } = useSocket({
     userId,
-    onUsersOnline: (onlineUserIds) => {
+    onUsersOnline: (onlineUserIds: string[]) => {
       // Update user list with online status
       updateOnlineStatus(onlineUserIds)
     },
-    onUserOnline: (onlineUserId) => {
+    onUserOnline: (onlineUserId: string) => {
       // Add new online user
       updateOnlineStatus([onlineUserId])
     }
